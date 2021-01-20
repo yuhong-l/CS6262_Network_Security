@@ -1,0 +1,197 @@
+Assignment Questionnaire
+========================
+
+NOTE: DO NOT DELETE --> and <--, and place your answers within the marks.
+  Example:
+    -->
+      130.207.7.210, scouter.cc.gatech.edu
+    <--
+
+
+Info
+====
+
+Example:
+  Your GT Login ID: kpark21
+  Your Name: Kyuhong Park
+
+-->
+  Your GT Login ID: 
+  Your Name: 
+<--
+
+Task 1
+=======
+
+1. What is the IP address of the vulnerable VM on the NAT network?
+
+Example:
+  IP : 10.0.2.3
+-->
+  IP : 
+<--
+
+
+2. Which port receives http traffic on the vulnerable VM.
+
+Example:
+  Port : 73
+
+-->
+  Port : 
+<--
+
+3. List each port whose service name is shown as "unknown", and the message obtained by connecting to that port.
+
+Example:
+  Port : 64
+  Answer : 1234567
+  Port : 34
+  Answer : 456789
+  ...
+
+-->
+
+<--
+
+
+Task 2
+=======
+
+1. What command did you use to exploit the shellshock vulnerability?
+
+Example:
+  Command : curl http://10.0.2.1:6262/cgi-bin/shellshock.cgi
+
+-->
+  Command : 
+<--
+
+
+2. What hash value is returned by running ./bin/task2 with your student ID.
+
+-->
+  Hash : 
+<--
+
+
+Task 3 
+=======
+
+1. Give the full name of the exploit module you used.
+
+Example:
+  Module : auxiliary/scanner/portscan/tcp
+
+-->
+  Module : 
+<--
+
+
+2. Give the full name of the payload you used:
+
+Example:
+  Payload : auxiliary/scanner/portscan/tcp
+
+-->
+  Payload : 
+<--
+
+
+3. What hash value is returned by running ./bin/task3 with your student ID.
+
+-->
+  Hash : 
+<--
+
+
+Task 4
+=======
+
+1. What command did you use to find the program with the vulnerable setUID bit (assume the command is being rurn from the /usr/bin directory).
+
+Example:
+  Command : find . php
+
+-->
+  Command : 
+<--
+
+
+2. Give the name of the vulnerable program in /usr/bin. 
+
+Example:
+  Program : passwd
+
+-->
+  Program : 
+<--
+
+
+3. What command did you use to exploit the setUID vulnerability to spawn a shell.
+
+-->
+  Command : 
+<--
+
+
+4. What hash value is returned by running ./bin/task4 with your student ID.
+
+-->
+  Hash : 
+<--
+
+
+Task 5
+=======
+
+1. Give the John the Ripper command you used to find the password of task51.zip.
+
+-->
+  Command : 
+<--
+
+
+2. What is the password for task51.zip.
+
+Example:
+  Password : 1234
+
+-->
+  Password : 
+<--
+
+
+3. What hash value is returned by running python task51.pyc with your student ID.
+
+-->
+  Hash : 
+<--
+
+
+4. Give the cewl command you used to create your wordlist.
+
+-->
+  Command : 
+<--
+
+
+5. Give the John the Ripper command you used to find the password of task52.pyc.gpg.
+
+-->
+  Command : 
+<--
+
+
+6. What is the password for task52.pyc.gpg.
+
+-->
+  Password : 
+<--
+
+
+7. What hash value is returned by running python task52.pyc with your student ID.
+
+-->
+  Hash : 
+<--
