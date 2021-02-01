@@ -93,7 +93,7 @@ Example:
   Module : auxiliary/scanner/portscan/tcp
 
 -->
-  Module : 
+  Module : exploit/multi/http/apache_mod_cgi_bash_env_exec
 <--
 
 
@@ -103,14 +103,14 @@ Example:
   Payload : auxiliary/scanner/portscan/tcp
 
 -->
-  Payload : 
+  Payload : linux/x86/shell_reverse_tcp
 <--
 
 
 3. What hash value is returned by running ./bin/task3 with your student ID.
 
 -->
-  Hash : 
+  Hash : 3aabeef1e90b3d8c26a38e11f22805822ea25076f17ad3e9975faa27e2edd541
 <--
 
 

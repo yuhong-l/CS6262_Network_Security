@@ -19,6 +19,22 @@ https://www.sevenlayers.com/index.php/125-exploiting-shellshock
 
 Task 3:
 <Your Explanation>
+found exploit using search shellshock
+exploit is - exploit/multi/http/apache_mod_cgi_bash_env_exec
+
+then searched payloads with "show payloads"
+used linux/x86/shell_reverse_tcp  
+
+then set the targeruri to be the /cgi-bin/shellshock.cgi
+
+set the host to host found in previous step
+
+then ran "check" , which returns if host is vulnerable to shellsock
+
+then ran "exploit" and followed directions
+
+cite: https://null-byte.wonderhowto.com/how-to/exploit-shellshock-web-server-using-metasploit-0186084/
+
 
 Task 4:
 <Your Explanation>
