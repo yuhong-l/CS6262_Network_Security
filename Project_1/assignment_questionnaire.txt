@@ -181,7 +181,7 @@ Example:
 4. Give the cewl command you used to create your wordlist.
 
 -->
-  Command : cewl -d 13 -w wordlist  http://10.0.0.4/cgi-bin/shellshock.cgi
+  Command : cewl -d 13 -w wordlist.txt  http://10.0.0.4/cgi-bin/shellshock.cgi
 <--
 
 
