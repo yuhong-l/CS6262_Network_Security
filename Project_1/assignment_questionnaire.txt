@@ -157,7 +157,7 @@ Task 5
 1. Give the John the Ripper command you used to find the password of task51.zip.
 
 -->
-  Command : 
+  Command : john --incremental task51hash
 <--
 
 
@@ -167,40 +167,40 @@ Example:
   Password : 1234
 
 -->
-  Password : 
+  Password : zhsvf
 <--
 
 
 3. What hash value is returned by running python task51.pyc with your student ID.
 
 -->
-  Hash : 
+  Hash : df1e0823463d52c3bfc309db7608bd5d395852e4f2d93f6a41a81a569903b6e1
 <--
 
 
 4. Give the cewl command you used to create your wordlist.
 
 -->
-  Command : 
+  Command : cewl -d 13 -w wordlist  http://10.0.0.4/cgi-bin/shellshock.cgi
 <--
 
 
 5. Give the John the Ripper command you used to find the password of task52.pyc.gpg.
 
 -->
-  Command : 
+  Command : john --wordlist="wordlist.txt" --rules task52hash
 <--
 
 
 6. What is the password for task52.pyc.gpg.
 
 -->
-  Password : 
+  Password : Chlorophyll8
 <--
 
 
 7. What hash value is returned by running python task52.pyc with your student ID.
 
 -->
-  Hash : 
+  Hash : 9dbcf5594361f8dca4d43d5c19e0d4cd1aa5e9b8a385be514b8bd79b7994b45c
 <--
