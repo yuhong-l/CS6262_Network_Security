@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name":"Google Chrome Color Extension",
+  "description":"Change the color of the contents on the webpage",
+
+  "version":"2.0",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Let's color it",
+    "default_popup": "popup.html"
+   },
+  "permissions": [
+    "tabs", "<all_urls>"
+   ]
+
+}
+//Permissions can be more specific like "contextMenus", "storage", "tabs", or some url
+// We can add many other options like background, web accessible resources etc.
+// For the project, work on permissions.

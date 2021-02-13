@@ -1,0 +1,6 @@
+{
+  "manifest_version": 2,
+  "name": "Your Extension Name",
+  "description": "Your extension description",
+  "version": "1.0"
+}

@@ -1,0 +1,6 @@
+<script>alert("hi");</script>
+
+<script src="URL-to-some-malicious-javascript-code.js"> </script>
+
+<ScRiPt> malicious code  </scRIPT>
+
