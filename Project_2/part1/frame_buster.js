@@ -1,10 +1,5 @@
 // Write your code below
 
-console.log("my extension running : IM ");
-
-
-
-
 var kill_bust = 0
 
 window.onbeforeunload =  function() { kill_bust++ }
