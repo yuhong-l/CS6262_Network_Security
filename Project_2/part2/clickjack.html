@@ -27,6 +27,12 @@
 				newDiv.style.height="20px";
 				newDiv.style.border="solid";
 				newDiv.style.color="red";
+				newDiv.style.position = "relative";
+				newDiv.style.display = "inline-block";
+				newDiv.style.right="20px";
+				newDiv.onclick = function() {
+					alert(1);
+				};
 				td.lastElementChild.appendChild(newDiv);
 			}
 		});
