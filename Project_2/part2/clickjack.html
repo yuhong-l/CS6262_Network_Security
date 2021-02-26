@@ -41,6 +41,8 @@
 					var url = 'http://www.gtshop.com/products/buy';
 					Http.open('POST',url);
 					Http.send(formData);
+					var dis = document.getElementById(index);
+					dis.style.pointerEvents = 'none';
 				};
 				td.lastElementChild.appendChild(newDiv);
 			}
