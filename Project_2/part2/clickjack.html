@@ -4,9 +4,23 @@
     <meta charset="UTF-8" />
     <title>Clickjacking</title>
   </head>
+
+  <script>
+   function SOP(){
+	var searchQuery = document.getElementById("q").value;
+
+	var url = "http://www.gtshop.com/products/lookup?q=" + searchQuery
+	window.location.href=url
+	return false;
+    }
+
+  </script>
+
+
   <body>
     <!-- DO NOT change the form id -->
-    <form id="clickjack-form">
+
+    <form id="clickjack-form" onsubmit="return SOP()"  action >
     <!-- !!! DO NOT MODIFY ANYTHING BELOW THIS COMMENT !!! -->
       <h1>Georgia Tech Shopping</h1>
       <input type="text" name="q" id="q" />
