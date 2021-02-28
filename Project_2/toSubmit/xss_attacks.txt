@@ -1,0 +1,6 @@
+<script >alert("Hello");</script>
+
+<script >alert("Hello");</script/script>
+
+<script>alert("Hello");</script src="somecode.js">
+

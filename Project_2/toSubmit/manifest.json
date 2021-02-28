@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Frame buster extension",
+  "description": "Frame buster extension description",
+  "version": "1.0",
+  "permissions":  [
+	"tabs"
+    ],
+ "content_scripts" : [
+ 	{
+ 		"js": ["frame_buster.js"] ,
+ 		"matches": [
+ 			"<all_urls>"
+ 		],
+	      "run_at": "document_end"
+ 	}
+ ]
+
+}
