@@ -16,8 +16,8 @@ Example:
   Your Name: Kyuhong Park
 
 -->
-  Your GT Login ID:
-  Your Name:
+  Your GT Login ID: imalik30
+  Your Name: Irfan Malik
 <--
 
 Stage 1 (20 Points)
@@ -32,8 +32,8 @@ Example:
   URL : http://scouter.cc.gatech.edu/home/directory/person.php
 
 -->
-  IP  : 
-  URL :
+  IP  : 128.61.240.66
+  URL : http://netscan.gtisc.gatech.edu/images/logo/header.php
 <--
 
 
@@ -46,7 +46,7 @@ Example:
   Name: asdf.exe
 
 -->
-  Name:
+  Name: iexplore.exe
 <--
 
 3. List down three commands which can be interpreted by the malware,
@@ -64,15 +64,15 @@ For example
   ...
 
 -->
-  Command 1:
-    Start :
-    End   : 
-  Command 2: 
-    Start : 
-    End   : 
-  Command 3: 
-    Start : 
-    End   : 
+  Command 1: $updatE
+    Start :  0x4050C0
+    End   :  0X405129
+  Command 2: $uninstalL
+    Start : 0x4050C0
+    End   : 0x40518a
+  Command 3: $downloaD
+    Start : 0x4050C0
+    End   : 0x4051db
 
 <--
 
@@ -83,7 +83,7 @@ Example:
   Command Name: $prOCeEd225
 
 -->
-  Command Name: 
+  Command Name: $updatE
 <--
 
 5. Where does the stage1 malware download the stage2 malware from?
@@ -96,8 +96,8 @@ Example:
   (e.g., nslookup 143.215.130.108)
 
 -->
-  IP    : 
-  Domain: 
+  IP    : 128.61.240.90
+  Domain:  iisp-rs-1.gtisc.gatech.edu
 <--
 
 Stage 2 (30 Points)
@@ -112,8 +112,8 @@ Example:
   URL : http://scouter.cc.gatech.edu/home/people/buzz.php
 
 -->
-  IP  : 
-  URL : 
+  IP  : 143.215.130.19
+  URL : http://canof.gtisc.gatech.edu/users/login.php
 <--
 
 
@@ -126,7 +126,7 @@ Example:
   Name: asdf.exe
 
 -->
-  Name: 
+  Name: calc.exe
 <--
 
 3. List down three commands which can be interpreted by the malware,
@@ -146,18 +146,18 @@ Hint for Command 4:
   Focus on Register-related APIs.
 
 -->
-  Command 1: 
-    Start :
-    End   : 
-  Command 2: 
-    Start : 
-    End   : 
-  Command 3: 
-    Start : 
-    End   : 
-  Command 4: 
-    Start : 
-    End   : 
+  Command 1: $Ch3ck1n0d67
+    Start : 0x405200
+    End   : 0x4053f0
+  Command 2: $D0wNI0Ad_COM3677e
+    Start : 0x405200
+    End   : 0x405375
+  Command 3: $uPdAte_COM27cdb
+    Start : 0x405200
+    End   : 0x4052f4
+  Command 4: $Un1N5tAli_COM1
+    Start : 0x405200
+    End   : 0x40527b
 <--
 
 4. Which command creates the 'naive' directory?
