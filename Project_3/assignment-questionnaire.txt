@@ -1,0 +1,340 @@
+Assignment Questionnaire
+========================
+
+NOTE: DO NOT DELETE --> and <--, and place your answers within the marks.
+  Example:
+    -->
+      130.207.7.210, scouter.cc.gatech.edu
+    <--
+
+
+Info
+====
+
+Example:
+  Your GT Login ID: kpark21
+  Your Name: Kyuhong Park
+
+-->
+  Your GT Login ID:
+  Your Name:
+<--
+
+Stage 1 (20 Points)
+===================
+
+1. What is the IP address and the URL of
+the command and control (C2) server of the stage1.exe malware?
+(2 Points)
+
+Example:
+  IP  : 130.207.7.210
+  URL : http://scouter.cc.gatech.edu/home/directory/person.php
+
+-->
+  IP  : 
+  URL :
+<--
+
+
+2. The malware (stage1.exe) hides itself from the task manager
+by injecting itself into another process.
+What is the name of this other process?
+(2 Points)
+
+Example:
+  Name: asdf.exe
+
+-->
+  Name:
+<--
+
+3. List down three commands which can be interpreted by the malware,
+and state the start and end addresses of the command interpreting function
+for each command using symbolic execution.
+(12 Points)
+
+For example
+  Command 1: $COmmaND1
+    Start : 0x401002 (hexadecimal number)
+    End   : 0x444039
+  Command 2: $cOMMand2
+    Start : 0x401002
+    End   : 0x44403a
+  ...
+
+-->
+  Command 1:
+    Start :
+    End   : 
+  Command 2: 
+    Start : 
+    End   : 
+  Command 3: 
+    Start : 
+    End   : 
+
+<--
+
+4. Which command lets the malware download the stage 2 malware (stage2.exe)?
+(2 Points)
+
+Example:
+  Command Name: $prOCeEd225
+
+-->
+  Command Name: 
+<--
+
+5. Where does the stage1 malware download the stage2 malware from?
+Specify the IP address and the domain name.
+(2 Points)
+
+Example:
+  IP    : 143.215.130.108
+  Domain: kyuhong.coc.gatech.edu (hint: use nslookup)
+  (e.g., nslookup 143.215.130.108)
+
+-->
+  IP    : 
+  Domain: 
+<--
+
+Stage 2 (30 Points)
+===================
+
+1. What is the IP address and the URL of
+the command and control (C2) server of the stage2.exe malware?
+(4 Points)
+
+Example:
+  IP  : 130.207.7.210
+  URL : http://scouter.cc.gatech.edu/home/people/buzz.php
+
+-->
+  IP  : 
+  URL : 
+<--
+
+
+2. The malware (stage2.exe) hides itself from the task manager
+by injecting itself into another process.
+What is the name of this other process?
+(2 Points)
+
+Example:
+  Name: asdf.exe
+
+-->
+  Name: 
+<--
+
+3. List down three commands which can be interpreted by the malware,
+and state the start and end addresses of the command interpreting
+function for each command using symbolic execution.
+(12 Points)
+
+For example
+  Command 1: $COmmaND1
+    Start : 0x401002
+    End   : 0x444039
+  Command 2: $cOMMand2
+    Start : 0x401002
+    End   : 0x44403a
+  ...
+Hint for Command 4:
+  Focus on Register-related APIs.
+
+-->
+  Command 1: 
+    Start :
+    End   : 
+  Command 2: 
+    Start : 
+    End   : 
+  Command 3: 
+    Start : 
+    End   : 
+  Command 4: 
+    Start : 
+    End   : 
+<--
+
+4. Which command creates the 'naive' directory?
+(2 Points)
+Example:
+  Command Name: $makeNaive885
+
+-->
+  Command Name: 
+<--
+
+5. After the creation of the 'naive' directory, where does the malware 
+create a key (hint:RegCreateKey)? Provide the full path.
+
+(6 Points)
+
+Hint: Please use Procmon in ProcessMonitor. With the filter function, 
+you can narrow down your scope with Process Name and Register-related APIs
+
+For Example:
+  Name: HKCU\Software\Microsoft\Ole
+
+-->
+  Name: 
+<--
+
+6. Which command lets the malware download the next malware payload (payload.exe/stage3.elf)?
+(4 Points)
+
+For Example:
+  Command Name: $getNext3
+  
+-->
+  Command Name: 
+<--
+
+
+Linux Malware (60 Points)
+=========================
+
+
+1. There are many attack functions with names starting with 'attack'.
+Only the ones which use '__libc_send' and '__libc_sendto' sub-functions 
+are relevant attack functions here.
+Write down the two attack functions actually called in the malware.
+(For this step, you need to use radare2, objdump or any other 
+reverse engineering tool)
+(8 Points)
+
+Example:
+  function name 1 : libc.attack_his_castle
+  function name 2 : gend.attack_their_base
+  
+-->
+  function name 1 : 
+  function name 2 : 
+<--
+
+2. In the provided python script, there is space to write down a single line of code
+which will limit the loop to 1 run. Write down that one-liner below
+(4 Points)
+Example:
+  CODE  : add_constraint(regs.ebx = 1) 
+
+-->
+  CODE : 
+<--
+
+
+3. Similarly as in the case above, write the one line of angr script that makes 
+the length of opts 0 in order to bypass a time consuming loop 
+4 Points)
+
+Example:
+  CODE  : add_constraint(regs.ebx = 1) 
+
+-->
+  CODE : 
+<--
+
+4. Find the addresses of the next instrucions after 
+'call __libc_send' and 'call __libc_sendto'.
+The start address for the symbolic execution is 0x804c8fb. 
+Run linux_sym_exec with start and target addresses and find the inputs.
+NOTE: The command names will be strings in the format shown below.
+(20 Points)
+
+For example
+  Command 1: |[abc])([de])\2\1|
+    Target : 0x844039
+  Command 2: $[abc])([de])\2\1
+    Target : 0x85403a
+  ...
+
+-->
+  Command 1: 
+    Target : 
+  Command 2: 
+    Target : 
+<--
+
+
+5. In the dynamicanalysis folder, there is a dynamic instruction trace named
+'instrace.linux.log'. The malware keeps trying to contact the C&C server. 
+Since this is unsuccessful, you will see the same functions called in a loop.
+List the sequence of functions called over and over again that tries to 
+establish a connection. To be able to find the loop, you need to write your own
+function inside detect_loop.py. Please write the addresses of functions as a list 
+(24 Points)
+
+For example
+  Function List: 0x419055, 0x499854, 0x488525, .....
+  ...
+
+-->
+  Function List: 
+<--
+
+
+Android Stage 1 (55 Points)
+===========================
+
+PLEASE READ ~/Android/MaliciousMessenger/writeup.pdf FIRST!
+All questions are in the writeup.pdf. Please answer the questions below.
+Do not leave new lines between the Answer Markers.
+
+4.5.1
+(5 Points)
+-->
+Replace This Line With your answer
+<--
+
+4.5.2
+(10 Points)
+-->
+Replace This Line With your answer
+<--
+
+4.5.3
+(20 Points)
+-->
+Replace This Line With your answer
+<--
+
+4.5.4
+(20 Points)
+-->
+Replace This Line With your answer
+<--
+
+
+ANDROID STAGE 2 (45 Points)
+===========================
+
+PLEASE READ ~/Android/MaliciousMessenger/writeup.pdf FIRST!
+All questions are in the writeup.pdf. Please answer the questions below.
+
+4.6.1
+(15 Points)
+-->
+Replace This Line With your answer
+<--
+
+4.6.2
+(10 Points)
+-->
+Replace This Line With your answer. First of 3 Answers Here
+<--
+
+4.6.3
+(10 Points)
+-->
+Replace This Line With your answer. Second of 3 Answers Here
+<--
+
+4.6.4
+(10 Points)
+-->
+Replace This Line With your answer. Third of 3 Answers Here
+<--
