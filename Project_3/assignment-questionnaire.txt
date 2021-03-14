@@ -166,7 +166,7 @@ Example:
   Command Name: $makeNaive885
 
 -->
-  Command Name: 
+  Command Name: $Ch3ck1n0d67
 <--
 
 5. After the creation of the 'naive' directory, where does the malware 
@@ -181,7 +181,7 @@ For Example:
   Name: HKCU\Software\Microsoft\Ole
 
 -->
-  Name: 
+  Name: HKCU\Software\Microsoft\Multimedia\Audio Compression Manager\Priority v4.00
 <--
 
 6. Which command lets the malware download the next malware payload (payload.exe/stage3.elf)?
@@ -191,7 +191,7 @@ For Example:
   Command Name: $getNext3
   
 -->
-  Command Name: 
+  Command Name: $D0wNI0Ad_COM3677e
 <--
 
 
@@ -212,8 +212,8 @@ Example:
   function name 2 : gend.attack_their_base
   
 -->
-  function name 1 : 
-  function name 2 : 
+  function name 1 : sym.attack_udp_plain
+  function name 2 : sym.attack_udp_generic
 <--
 
 2. In the provided python script, there is space to write down a single line of code
@@ -223,7 +223,7 @@ Example:
   CODE  : add_constraint(regs.ebx = 1) 
 
 -->
-  CODE : 
+  CODE : state.add_constraints(state.regs.al == 1)
 <--
 
 
@@ -235,7 +235,7 @@ Example:
   CODE  : add_constraint(regs.ebx = 1) 
 
 -->
-  CODE : 
+  CODE :  state.add_constraints(state.regs.al == 0)
 <--
 
 4. Find the addresses of the next instrucions after 
@@ -253,10 +253,12 @@ For example
   ...
 
 -->
-  Command 1: 
-    Target : 
-  Command 2: 
-    Target : 
+  Command 1: |[0-9][IP]910|
+    Target : 0x08051251
+  Command 2: |[0-9][IP]010|
+    Target : 0x0805041b
+
+
 <--
 
 
