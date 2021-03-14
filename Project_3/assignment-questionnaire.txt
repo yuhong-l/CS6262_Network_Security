@@ -275,7 +275,7 @@ For example
   ...
 
 -->
-  Function List: 
+  Function List: 0x8053d54 , 0x8053c70 , 0x8054c73, 0x8054b6b , 0x80552a0 , 0x8053e04
 <--
 
 
