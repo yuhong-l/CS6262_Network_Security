@@ -301,13 +301,15 @@ com.smsmessenger.IncomingSms
 4.5.3
 (20 Points)
 -->
-Replace This Line With your answer
+Alright! Alright! Alright!
+Two peanuts were walkin down the road. And?
+One was a salted! xD
 <--
 
 4.5.4
 (20 Points)
 -->
-Replace This Line With your answer
+8
 <--
 
 
@@ -320,23 +322,22 @@ All questions are in the writeup.pdf. Please answer the questions below.
 4.6.1
 (15 Points)
 -->
-Replace This Line With your answer
+000000000000000
 <--
 
 4.6.2
 (10 Points)
 -->
-Replace This Line With your answer. First of 3 Answers Here
+pqjd/IvdJ775wRX8IDo2TA==
 <--
-
 4.6.3
 (10 Points)
 -->
-Replace This Line With your answer. Second of 3 Answers Here
+NYCYyTToZr8y7ZdHzWWx1A==
 <--
 
 4.6.4
 (10 Points)
 -->
-Replace This Line With your answer. Third of 3 Answers Here
+ydEU3CgL9XqSwVcdYa29hQ==
 <--
