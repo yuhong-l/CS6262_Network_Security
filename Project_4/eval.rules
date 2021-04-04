@@ -1,0 +1,1 @@
+alert tcp 13.58.98.64 any -> 172.31.69.25 22 (msg:"Bruteforce"; rev:001;)
