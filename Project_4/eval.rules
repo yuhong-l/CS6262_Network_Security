@@ -1,1 +1,35 @@
-alert tcp 13.58.98.64 any -> 172.31.69.25 22 (msg:"Bruteforce"; rev:001;)
+alert http  18.218.115.60/24 any -> 172.31.69.28/24 80 
+(
+        msg:"WebAttack";
+	http_method;
+	content: "GET";
+	http_uri;
+	content: "script";
+	sid:1000001;
+        rev:1;
+
+)
+
+alert http  172.31.69.23/24 any -> 18.219.211.138/24 8080
+(
+        msg:"Botnet";	
+	http_method;
+	content: "POST";
+	http_uri;
+	content: "Administrator";
+        sid:1000002;
+        rev:1;
+
+)
+
+
+
+alert tcp  13.58.98.64/24 any -> 172.31.69.25/24 22
+(
+	msg:"Bruteforce"; 
+	detection_filter: track by_src, count 500, seconds 1;
+	sid:1000003;
+	rev:1;
+		
+)
+
