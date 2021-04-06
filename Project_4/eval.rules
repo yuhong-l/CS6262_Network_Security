@@ -33,3 +33,11 @@ alert tcp  13.58.98.64/24 any -> 172.31.69.25/24 22
 		
 )
 
+alert tcp  172.31.66.94/24 any -> 34.211.140.227/24 443
+(
+	msg:"DoS"; 
+	detection_filter: track by_src, count 200, seconds 1;
+	sid:1000004;
+	rev:1;
+		
+)
