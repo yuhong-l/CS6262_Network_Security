@@ -4,6 +4,7 @@ import struct
 import math
 import dpkt
 import socket
+import numpy
 from collections import Counter
 from frequency import *
 
@@ -12,11 +13,59 @@ def substitute(attack_payload, substitution_table):
     # Note that you also need to generate a xor_table which will be used to decrypt
     # the attack_payload
     # i.e. (encrypted attack payload) XOR (xor_table) = (original attack payload)
-    b_attack_payload = bytearray(attack_payload, "utf8")
+    #b_attack_payload = bytearray(attack_payload, "utf8")
+
+
     result = []
     xor_table = []
-    # Based on your implementattion of substitution table, please prepare result
-    # and xor_table as output
+    #loop through all characters in the attaack payload
+    for i in range(len(attack_payload)):
+        list_sub = substitution_table[attack_payload[i]]
+        sub_prob_list = {}
+        replace_char_list = [];
+        replace_char_prob_list = []
+        #if the attack payload only has a match of 1 list in the sub table, then
+        #use that as the substitute and add to the result and xor list
+        if len(list_sub) == 1:
+            temp  = (list_sub[0])[0];
+            result.append(temp)
+            or1 = ord(attack_payload[i])
+            or2 = ord(temp)
+            final_xord  = or1 ^ or2
+            xor_table.append(chr(final_xord))
+
+        #otherwise calculate the weights of each value in the
+        #mapping and randomly select one to enter into the xor and result table
+        else:
+            total = 0;
+            #get total weight
+            for j in range(len(list_sub)):
+                total += (list_sub[j])[1]
+            for x in range(len(list_sub)):
+                sub_prob_list[(list_sub[x])[0]] = ((list_sub[x])[1])/total
+                replace_char_list.append((list_sub[x])[0])
+                replace_char_prob_list.append((list_sub[x])[1]/total)
+                
+            #total_prob=0
+            #only used to verify normalization = 1
+            #for w in sub_prob_list.values():
+            #    total_prob += w;
+            ##
+
+            #make  a selection from the mapping based on its probablity
+            random_val = numpy.random.choice(a=replace_char_list,p=replace_char_prob_list)
+            result.append(random_val)
+            or1 = ord(attack_payload[i])
+            or2 = ord(random_val)
+            final_xord  = or1 ^ or2
+            xor_table.append(chr(final_xord))     
+                
+
+    print("final result list is " + str(result))
+    print("final xor list is " + str(xor_table))
+
+    print("len result " + str(len(result)) + " len xor " + str(len(xor_table)))
+
 
     return (xor_table, result)
 
@@ -27,55 +76,32 @@ def getSubstitutionTable(artificial_payload, attack_payload):
 
 
     ## TEST for small frequency
-    #artificial_payload = 'abbcccddddeeeee' 
-    #attack_payload = 'rrssstttt' 
+    #artificial_payload = 'abbcccdddd' 
+    #attack_payload = 'rrsss' 
+
 
     # Note that the frequency for each byte is provided below in dictionay format.
     # Please check frequency.py for more details
     artificial_frequency = frequency(artificial_payload)
-    attack_frequency = frequency(attack_payload)
 
+    attack_frequency = frequency(attack_payload)
     sorted_artificial_frequency = sorting(artificial_frequency)
     sorted_attack_frequency = sorting(attack_frequency)
-
-    print("sorted aritifical ")
-    print(sorted_artificial_frequency)
-
-    print("sorted attack")
-    print(sorted_attack_frequency)
-
-    # Your code here ...    
-    #print("put something here")
 
 
     #number of distint characters in attack traffic
     attack_len = len(sorted_attack_frequency);
-    print(attack_len)
 
     #number of distincy characters in  normal/artificial
     normal_len = len(sorted_artificial_frequency);
-    print(normal_len)
 
-
-    #copy of attack traffic that will be substitued and becom
-    #substituio_table
 
     temp_sub_table = sorted_attack_frequency;
+    temp_values = [[] for i in range(attack_len)]  #initialize list of attack_len elements
 
-    temp_values = [[] for i in range(attack_len)]
-
-
-    
     for i in range(attack_len):
-        #print("i is "  + str(i))
-        #print("i val is " + str(sorted_artificial_frequency[i]))
         temp_values[i].append(sorted_artificial_frequency[i])
 
-
-
-    #print("temp values to copy are " + str(temp_values))
-
-    #copy temp values into original table
 
     substitution_table = {}
     for i in range(len(temp_sub_table)):
@@ -85,14 +111,9 @@ def getSubstitutionTable(artificial_payload, attack_payload):
         substitution_table[temp_key]=temp_values[i]
 
 
-    #now after subing first attack_len values, get the attack_len +1 character
-    #and find the max ratio
-
-    #print("current sub table is "  + str(substitution_table))
 
     values_left = normal_len-attack_len;
     for j in range(values_left):
-        #print("*************iteration for : " +str(j))
         temp_list_comparison = {}
         largest_ration = 0
         largest_ration_key = '';
@@ -102,45 +123,26 @@ def getSubstitutionTable(artificial_payload, attack_payload):
             #get the original frequency/ divide by new frequency
             original_freq = (sorted_attack_frequency[i])[1]
             original_key =  (sorted_attack_frequency[i])[0]
-            #print("original freq is "  + str(original_freq))
-            #print("original freq key is "  + str((sorted_attack_frequency[i])[0]))
-            #print("iterat through " + str(substitution_table[original_key]))
-            #this needs to be the sum of all of them in the list
             total =0;
             for k in range(len(substitution_table[original_key])):
-                #print("getting value " + str(((substitution_table[original_key])[k])[1]))
                 total += ((substitution_table[original_key])[k])[1]
-            #print("new freq is " + str(substitution_table[original_key]))
-            #print("new freq is "  + str(total))
+
             new_freq = total;
-            #new_freq =((substitution_table[original_key])[0])[1]
-            #rint("new freq is "  + str(new_frequency))
-            #print("divding " + str(original_freq) + "/" + str(new_freq))
             comparison = round(original_freq/new_freq,3);
-            #print("division is " + str(comparison))
             if comparison > largest_ration :
                 largest_ration_key = original_key
                 largest_ration_value = comparison;
-                #print("setting current largest to " + str(largest_ration_key) +":"+str(largest_ration_value))
                 largest_ration = comparison;
 
             temp_list_comparison[original_key] = comparison;
 
 
-        #print("final comparison list is " + str(temp_list_comparison))
 
-        #print("largest ration = "  + str(largest_ration_key))
-        #print("largest key  = " + str(largest_ration_value))
-        #print(str(substitution_table[largest_ration_key]))
         substitution_table[largest_ration_key].append(sorted_artificial_frequency[attack_len +j])
 
-
-    
     # Make sure your substitution table can be used in
-    print("final")
     print(substitution_table)
-    #substitute(attack_payload, subsitution_table)
-
+    #substitute(attack_payload, substitution_table)
 
     return substitution_table
 
