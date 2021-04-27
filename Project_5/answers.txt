@@ -1,6 +1,6 @@
 Project-Quiz:-
-Answer 1:
+Answer 1: a
 Answer 2: b
 Answer 3: a
 Answer 4: c
-Answer 5:
+Answer 5: a
